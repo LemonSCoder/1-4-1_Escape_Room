@@ -62,6 +62,7 @@ public class EscapeRoom
     
     GameGUI game = new GameGUI();
     game.createBoard();
+    //Five traps set on board
     game.setTraps(5);
     UserInput userInput = new UserInput();
 
@@ -74,6 +75,7 @@ public class EscapeRoom
     int score = 0;
 
     Scanner in = new Scanner(System.in);
+    //Added "help", "h", and "?" commands. User can type those in to get a list of commands returned to them.
     String[] validCommands = { "right", "left", "up", "down", "r", "l", "u", "d",
     "jump", "jr", "jumpleft", "jl", "jumpup", "ju", "jumpdown", "jd",
     "pickup", "p", "quit", "q", "s", "spring", "replay", "help", "h", "?"};
@@ -91,15 +93,20 @@ public class EscapeRoom
       System.out.println("Input a command: Type 'h' for a list of commands.");
       String input = userInput.getValidInput(validCommands);
       // userInput.getValidInput(validCommands);
+      // Input.equals("q") = quit the game
       if (input.equals("q")) {
         game.endGame();
         play = false;
       } else if (input.equals("h")) {
         System.out.println("These are your commands: " + validCommands);
+      //Player controls (left, right, down, up, jump right, jump left, jump down, and jump up); simple movement moves player 50 units in a certain direction while jumping moves player 100 units in a certain direction.
       } else if (input.equals("r")) {
+        //Checks for traps
         game.isTrap(px, py);
         game.movePlayer(50, 0);
+        //Adds appropriate value to px and py so that they can be accurately used for future reference when methods are called.
         px += 50;
+        //Each step adds points to the player's score (with several exceptions)
         score += 10;
       } else if (input.equals("l")) {
         game.isTrap(px, py);
