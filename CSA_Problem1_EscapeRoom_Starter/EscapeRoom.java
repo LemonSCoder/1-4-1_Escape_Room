@@ -111,6 +111,7 @@ public class EscapeRoom
       } else if (input.equals("l")) {
         game.isTrap(px, py);
         game.movePlayer(-50, 0);
+        //Each step subtracts points to the player's score (with several exceptions)
         px -= 50;
         score += 10;
       } else if (input.equals("u")) {
@@ -124,12 +125,15 @@ public class EscapeRoom
         py -= 50;
         score += 10;
       } else if (input.equals("re")) {
+        //The game will restart with a new maze, new prize locations, and new traps if the player types in "re"
         game.replay();
+        //Score/Step Numbers, and reset confirmation message printed. Score is also reset.
         System.out.println("score=" + score);
         System.out.println("steps=" + game.getSteps());
         System.out.println("Your game has been reset!");
         score = 0;
       } else if (input.equals("p")) {
+        //Player will pickup a prize if they're on a square containing it. Prizes are worth 5x more points than a step/jump.
         game.pickupPrize();
         score += 50;
       } else if (input.equals("jr")) {
@@ -153,22 +157,27 @@ public class EscapeRoom
           py -= 100;
           score += 10;
       } else if (input.equals("s")) {
+        //Checks if trap is in close enough proximity to the player (50 pixels up, down, left, or right). If so, points are added to the score.
         if (Math.abs(game.springTrap(50, 0)) == game.springTrap(50, 0) || Math.abs(game.springTrap(-50, 0)) == game.springTrap(-50, 0) || Math.abs(game.springTrap(0, 50)) == game.springTrap(0, 50) || Math.abs(game.springTrap(0, -50)) == game.springTrap(0, -50)) {
           score += 10;
         } else {
+          //If the player springs a trap that does not exist, there will be a penalty and a message that notifies the player that this is the case.
           score -= 10;
           System.out.println("You sprung a trap that didn't exist.");
         }
       } else {
+        //Invalid input = penalty
         score -= 10;
       }
     }
+    //Message that appears upon the pickup of all prizes.
     System.out.println("You picked up all the prizes you could!");
 
   
 
     score += game.endGame();
-
+        
+    //Score/Step Numbers printed.
     System.out.println("score=" + score);
     System.out.println("steps=" + game.getSteps());
   }
