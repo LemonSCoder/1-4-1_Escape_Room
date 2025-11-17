@@ -1,6 +1,8 @@
 # 1.4.1 Escape Room
+---
 ## Flowchart:
-
+![https://github.com/LemonSCoder/1-4-1_Escape_Room/blob/main/CSA_Problem1_EscapeRoom_Starter/EscapeRoomFlowchart.png](https://github.com/LemonSCoder/1-4-1_Escape_Room/blob/main/CSA_Problem1_EscapeRoom_Starter/EscapeRoomFlowchart.png)
+---
 ## 🎖️ Milestones:
 
 | Milestones  | Estimated Time to Develop | Actual Time to Develop |
