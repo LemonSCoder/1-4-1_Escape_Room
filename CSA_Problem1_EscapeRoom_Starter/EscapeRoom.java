@@ -84,6 +84,7 @@ public class EscapeRoom
     boolean play = true;
     int currentPrizeNum = game.returnPrizeNum();
     int currentPickupNum = game.returnPickupNum();
+    //Game continues as long as the player has not picked up all the possible prizes in the maze.
     while (play && currentPrizeNum != currentPickupNum)
     {
       currentPrizeNum = game.returnPrizeNum();
