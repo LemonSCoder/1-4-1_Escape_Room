@@ -33,6 +33,7 @@ import java.util.Scanner;
             input = getLine().toLowerCase();
             for(String str : validInputs)
             {
+                //Checks the user's input in lowercase equals a valid input
                 if(input.equals(str.toLowerCase())) {
                     System.out.println("This is valid.");
                     valid = true;
@@ -42,6 +43,7 @@ import java.util.Scanner;
                 System.out.print("Invalid input. Please try again\n>");
         }
         while(!valid);
+        //Checks if user's input equals certain valid commands. Will return the shorter reference to the valid command for EscapeRoom.java.
         if (input.equals("q") || input.equals("quit")) {
             return "q";
         } else if (input.equals("h") || input.equals("help") || input.equals("?")) {
@@ -75,6 +77,7 @@ import java.util.Scanner;
         Scanner s = new Scanner(System.in);
         return s.nextLine();
     }
+
 
 
   }
